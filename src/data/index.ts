@@ -1,4 +1,4 @@
-const products = [
+export default [
   {
     name: "HEATHER GREY TEE",
     photos: [
@@ -11,6 +11,6 @@ const products = [
       "https://yeezy.com/cdn/shop/files/7_c9f3dcf3-c4e6-4d80-84b7-c3dae4919f66.png?height=650&v=1714270017",
       "https://yeezy.com/cdn/shop/files/8_cac211c4-3026-4eea-bb07-8082ed258659.png?height=650&v=1714270020",
     ],
-    price:"$20"
+    price: "$20",
   },
 ];
