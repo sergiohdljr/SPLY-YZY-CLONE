@@ -1,10 +1,45 @@
 <script lang="ts">
   import products from "../data/index";
+
+  let image: HTMLImageElement;
+
+  function handleMouseOver() {
+    const imagens = products[0].photos;
+    let i = 0;
+
+    function mostrarProximaImagem() {
+      image.src = imagens[i];
+      i = (i + 1) % imagens.length;
+      timeoutId = setTimeout(mostrarProximaImagem, 1000);
+    }
+
+    let timeoutId = setTimeout(mostrarProximaImagem, 1000);
+
+    image.addEventListener("mouseleave", () => {
+      clearTimeout(timeoutId);
+      image.src = imagens[0];
+    });
+
+    image.addEventListener("focus", () => {
+      handleMouseOver();
+    });
+  }
 </script>
 
-<section class="card">
+<section
+  role="button"
+  tabindex="0"
+  class="card"
+  on:mouseover={handleMouseOver}
+  on:focus={handleMouseOver}
+>
   <figure class="card__image__container">
-    <img class="card__image" src={products[0].photos[0]} alt="" />
+    <img
+      class="card__image"
+      bind:this={image}
+      src={products[0].photos[0]}
+      alt=""
+    />
   </figure>
   <span class="card__text">
     <h3 class="card__text__Title">{products[0].name}</h3>
